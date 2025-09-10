@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <title>Nauka Programowania: HTML & CSS</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            background: linear-gradient(120deg, #e3f0ff 0%, #f7cac9 100%);
+            font-family: 'Segoe UI', Arial, sans-serif;
+            margin: 0;
+            color: #222;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            background: #fff;
+            border-radius: 32px;
+            box-shadow: 0 8px 32px #0002;
+            padding: 48px 40px 56px 40px;
+            text-align: center;
+            position: relative;
+            animation: fadein 1s;
+        }
+        h1 {
+            color: #2a7ae2;
+            margin-bottom: 18px;
+            font-size: 2.8em;
+            letter-spacing: 2px;
+            animation: slidein 1s;
+        }
+        @keyframes slidein {
+            from { opacity: 0; transform: translateY(-60px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+        h2 {
+            color: #e17055;
+            margin-top: 36px;
+            font-size: 1.7em;
+        }
+        .img-row {
+            display: flex;
+            justify-content: center;
+            gap: 36px;
+            margin: 32px 0 24px 0;
+        }
+        .img-row img {
+            width: 120px;
+            height: 120px;
+            border-radius: 20px;
+            box-shadow: 0 4px 24px #2a7ae244;
+            object-fit: cover;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 4px solid #e3f0ff;
+            animation: fadein 1.5s;
+        }
+        .img-row img:hover {
+            transform: scale(1.13) rotate(-6deg);
+            box-shadow: 0 8px 32px #e17055aa;
+            border-color: #e17055;
+        }
+        @keyframes fadein {
+            from { opacity: 0; transform: translateY(40px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+        .btn-row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 24px;
+            margin: 32px 0 24px 0;
+        }
+        .main-btn {
+            background: linear-gradient(90deg, #e17055 0%, #2a7ae2 100%);
+            color: #fff;
+            border: none;
+            border-radius: 30px;
+            padding: 18px 44px;
+            font-size: 1.2em;
+            cursor: pointer;
+            box-shadow: 0 4px 16px #e1705544;
+            transition: background 0.2s, transform 0.2s;
+            animation: pulse 1.5s infinite;
+            outline: none;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+        .main-btn:hover {
+            background: linear-gradient(90deg, #34495e 0%, #e17055 100%);
+            transform: scale(1.09) rotate(-2deg);
+            box-shadow: 0 8px 24px #34495e88;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 #e1705544; }
+            70% { box-shadow: 0 0 0 16px #e1705500; }
+            100% { box-shadow: 0 0 0 0 #e1705500; }
+        }
+        .section {
+            background: linear-gradient(120deg, #e3f0ff 60%, #fff 100%);
+            border-radius: 18px;
+            box-shadow: 0 2px 12px #2a7ae222;
+            padding: 28px 22px;
+            margin: 28px 0;
+            text-align: left;
+            font-size: 1.15em;
+            color: #34495e;
+            animation: fadein 1.2s;
+        }
+        .section h3 {
+            color: #e17055;
+            margin-bottom: 12px;
+            font-size: 1.2em;
+        }
+        code, pre {
+            background: #f0f4fa;
+            border-radius: 6px;
+            padding: 6px 10px;
+            font-size: 1em;
+            color: #1e5ca6;
+            display: inline-block;
+        }
+        .quiz-section {
+            background: #f7cac9;
+            border-radius: 18px;
+            box-shadow: 0 4px 24px #e1705544;
+            padding: 32px 24px 40px 24px;
+            margin-top: 48px;
+            animation: fadein 1.2s;
+        }
+        .question {
+            background: #f0f4fa;
+            border-radius: 10px;
+            padding: 18px;
+            margin: 18px 0;
+            text-align: left;
+        }
+        .quiz-btn {
+            background: linear-gradient(90deg, #e17055 0%, #2a7ae2 100%);
+            color: #fff;
+            border: none;
+            border-radius: 30px;
+            padding: 12px 32px;
+            font-size: 1.1em;
+            cursor: pointer;
+            box-shadow: 0 4px 16px #e1705544;
+            transition: background 0.2s, transform 0.2s;
+            margin-top: 12px;
+            animation: pulse 1.5s infinite;
+        }
+        .quiz-btn:hover {
+            background: linear-gradient(90deg, #34495e 0%, #e17055 100%);
+            transform: scale(1.08) rotate(-2deg);
+        }
+        .result {
+            color: #2a7ae2;
+            font-weight: bold;
+            margin-top: 8px;
+        }
+        .footer {
+            margin-top: 40px;
+            color: #34495e;
+            font-size: 1.1em;
+            opacity: 0.8;
+        }
+        .example-box {
+            background: #e3f0ff;
+            border-radius: 10px;
+            padding: 18px;
+            margin: 18px 0;
+            text-align: left;
+            font-size: 1.08em;
+            animation: fadein 1.2s;
+        }
+        .anim-demo {
+            background: linear-gradient(90deg, #e17055 0%, #2a7ae2 100%);
+            color: #fff;
+            border-radius: 18px;
+            width: 120px;
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3em;
+            margin: 0 auto 12px auto;
+            box-shadow: 0 4px 16px #e1705544;
+            animation: bouncebox 2s infinite;
+            transition: background 0.3s, transform 0.3s;
+        }
+        .anim-demo:hover {
+            background: linear-gradient(90deg, #34495e 0%, #e17055 100%);
+            transform: scale(1.08) rotate(-2deg);
+        }
+        @keyframes bouncebox {
+            0%, 100% { transform: translateY(0);}
+            50% { transform: translateY(-10px);}
+        }
+        .nav-bar {
+            display: flex;
+            justify-content: center;
+            gap: 18px;
+            margin-bottom: 32px;
+        }
+        .nav-btn {
+            background: linear-gradient(90deg, #2a7ae2 0%, #e17055 100%);
+            color: #fff;
+            border: none;
+            border-radius: 24px;
+            padding: 12px 28px;
+            font-size: 1.1em;
+            cursor: pointer;
+            box-shadow: 0 2px 8px #2a7ae244;
+            transition: background 0.2s, transform 0.2s;
+            animation: pulse 1.5s infinite;
+            outline: none;
+            font-weight: bold;
+        }
+        .nav-btn:hover {
+            background: linear-gradient(90deg, #e17055 0%, #2a7ae2 100%);
+            transform: scale(1.07) rotate(-2deg);
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+    <script>
+        function showSection(id) {
+            document.querySelectorAll('.section').forEach(s => s.classList.add('hidden'));
+            document.getElementById(id).classList.remove('hidden');
+        }
+        function showExample(id) {
+            document.querySelectorAll('.example-box').forEach(e => e.classList.add('hidden'));
+            document.getElementById(id).classList.remove('hidden');
+        }
+        window.onload = function() {
+            showSection('sec-html');
+            showExample('ex-html');
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Nauka Programowania: HTML & CSS</h1>
+        <div class="img-row">
+            <img src="https://cdn-icons-png.flaticon.com/512/732/732212.png" alt="HTML" title="HTML">
+            <img src="https://cdn-icons-png.flaticon.com/512/732/732190.png" alt="CSS" title="CSS">
+            <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80" alt="Kreatywność" title="Kreatywność">
+        </div>
+        <div class="nav-bar">
+            <button class="nav-btn" onclick="showSection('sec-html');showExample('ex-html')">HTML</button>
+            <button class="nav-btn" onclick="showSection('sec-css');showExample('ex-css')">CSS</button>
+            <button class="nav-btn" onclick="showSection('sec-anim');showExample('ex-anim')">Animacje</button>
+            <button class="nav-btn" onclick="showSection('sec-tasks');showExample('ex-tasks')">Ćwiczenia</button>
+        </div>
+
+        <!-- HTML Section -->
+        <div id="sec-html" class="section">
+            <h3>Podstawy HTML</h3>
+            <ul>
+                <li>HTML to język znaczników, który tworzy strukturę strony.</li>
+                <li>Każdy element to znacznik, np. <code>&lt;p&gt;Akapit&lt;/p&gt;</code></li>
+                <li>Znaczniki mogą mieć atrybuty, np. <code>&lt;img src="..." alt="..."&gt;</code></li>
+                <li>Struktura strony:
+                    <pre>
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;Moja strona&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    Tutaj jest treść!
+  &lt;/body&gt;
+&lt;/html&gt;
+                    </pre>
+                </li>
+                <li>Najważniejsze znaczniki:
+                    <ul>
+                        <li><code>&lt;h1&gt;</code> do <code>&lt;h6&gt;</code> – nagłówki</li>
+                        <li><code>&lt;p&gt;</code> – akapit</li>
+                        <li><code>&lt;ul&gt;</code>, <code>&lt;ol&gt;</code>, <code>&lt;li&gt;</code> – listy</li>
+                        <li><code>&lt;a&gt;</code> – link</li>
+                        <li><code>&lt;img&gt;</code> – obrazek</li>
+                        <li><code>&lt;table&gt;</code> – tabela</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <!-- CSS Section -->
+        <div id="sec-css" class="section hidden">
+            <h3>Podstawy CSS</h3>
+            <ul>
+                <li>CSS pozwala stylować stronę: kolory, czcionki, marginesy, animacje.</li>
+                <li>Dodajemy w &lt;style&gt; w &lt;head&gt; lub w osobnym pliku .css.</li>
+                <li>Selektory CSS wybierają elementy, np. <code>h1 { color: blue; }</code></li>
+                <li>Przykład:
+                    <pre>
+&lt;style&gt;
+  h1 {
+    color: #e17055;
+    text-align: center;
+  }
+  p {
+    color: #2a7ae2;
+    font-size: 1.2em;
+  }
+&lt;/style&gt;
+                    </pre>
+                </li>
+                <li>Możesz stylować dowolny element!</li>
+            </ul>
+        </div>
+        <!-- Animations Section -->
+        <div id="sec-anim" class="section hidden">
+            <h3>Animacje w CSS</h3>
+            <ul>
+                <li>Animacje pozwalają na płynne zmiany stylu elementów.</li>
+                <li>Używamy <code>transition</code> i <code>@keyframes</code>.</li>
+                <li>Przykład animowanego przycisku:
+                    <pre>
+button {
+  transition: background 0.3s, transform 0.3s;
+}
+button:hover {
+  background: #e17055;
+  transform: scale(1.08) rotate(-2deg);
+}
+                    </pre>
+                </li>
+                <li>Przykład animacji boxa:
+                    <pre>
+@keyframes bouncebox {
+  0%, 100% { transform: translateY(0);}
+  50% { transform: translateY(-10px);}
+}
+.anim-demo {
+  animation: bouncebox 2s infinite;
+}
+                    </pre>
+                </li>
+            </ul>
+            <div class="anim-demo">Animacja!</div>
+        </div>
+        <!-- Tasks Section -->
+        <div id="sec-tasks" class="section hidden">
+            <h3>Ćwiczenia praktyczne</h3>
+            <ul>
+                <li>Stwórz nagłówek <code>&lt;h1&gt;Moja pierwsza strona&lt;/h1&gt;</code></li>
+                <li>Dodaj akapit <code>&lt;p&gt;To jest mój pierwszy tekst.&lt;/p&gt;</code></li>
+                <li>Dodaj listę hobby</li>
+                <li>Dodaj obrazek z internetu</li>
+                <li>Dodaj link do ulubionej strony</li>
+                <li>Stwórz tabelę z planem lekcji</li>
+                <li>Dodaj własny styl CSS</li>
+                <li>Zrób animowany przycisk</li>
+            </ul>
+        </div>
+
+        <!-- Examples -->
+        <div id="ex-html" class="example-box">
+            <b>Przykład HTML:</b>
+            <pre>
+&lt;h1&gt;Witaj na mojej stronie!&lt;/h1&gt;
+&lt;p&gt;To jest przykładowy akapit.&lt;/p&gt;
+&lt;img src="https://picsum.photos/200" alt="Obrazek"&gt;
+            </pre>
+        </div>
+        <div id="ex-css" class="example-box hidden">
+            <b>Przykład CSS:</b>
+            <pre>
+h1 {
+  color: #e17055;
+  text-align: center;
+}
+img {
+  border-radius: 12px;
+  box-shadow: 0 4px 16px #2a7ae244;
+}
+            </pre>
+        </div>
+        <div id="ex-anim" class="example-box hidden">
+            <b>Przykład animacji CSS:</b>
+            <pre>
+button {
+  transition: background 0.3s, transform 0.3s;
+}
+button:hover {
+  background: #e17055;
+  transform: scale(1.08) rotate(-2deg);
+}
+            </pre>
+        </div>
+        <div id="ex-tasks" class="example-box hidden">
+            <b>Przykład ćwiczenia:</b>
+            <pre>
+&lt;table border="1"&gt;
+  &lt;tr&gt;&lt;th&gt;Dzień&lt;/th&gt;&lt;th&gt;Przedmiot&lt;/th&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;Poniedziałek&lt;/td&gt;&lt;td&gt;Matematyka&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+            </pre>
+        </div>
+
+        <!-- Quiz Section -->
+        <div class="quiz-section">
+            <h2>Sprawdzian HTML & CSS</h2>
+            <form id="quizForm">
+                <div class="question">
+                    <b>1. Który znacznik służy do nagłówka?</b><br>
+                    <input type="radio" name="q1" value="h1"> &lt;h1&gt;<br>
+                    <input type="radio" name="q1" value="p"> &lt;p&gt;<br>
+                    <input type="radio" name="q1" value="ul"> &lt;ul&gt;<br>
+                </div>
+                <div class="question">
+                    <b>2. Jak ustawić kolor tekstu na czerwony w CSS?</b><br>
+                    <input type="radio" name="q2" value="color"> color: red;<br>
+                    <input type="radio" name="q2" value="background"> background: red;<br>
+                    <input type="radio" name="q2" value="font"> font: red;<br>
+                </div>
+                <div class="question">
+                    <b>3. Który znacznik dodaje obrazek?</b><br>
+                    <input type="radio" name="q3" value="img"> &lt;img&gt;<br>
+                    <input type="radio" name="q3" value="a"> &lt;a&gt;<br>
+                    <input type="radio" name="q3" value="table"> &lt;table&gt;<br>
+                </div>
+                <div class="question">
+                    <b>4. Jak zrobić link do strony?</b><br>
+                    <input type="radio" name="q4" value="a"> &lt;a href="..."&gt;Tekst&lt;/a&gt;<br>
+                    <input type="radio" name="q4" value="img"> &lt;img src="..."&gt;<br>
+                    <input type="radio" name="q4" value="ul"> &lt;ul&gt;<br>
+                </div>
+                <button type="submit" class="quiz-btn">Sprawdź odpowiedzi</button>
+            </form>
+            <div id="wynikQuizu" class="result"></div>
+        </div>
+        <script>
+            document.getElementById('quizForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                let score = 0;
+                if (document.querySelector('input[name="q1"]:checked')?.value === "h1") score++;
+                if (document.querySelector('input[name="q2"]:checked')?.value === "color") score++;
+                if (document.querySelector('input[name="q3"]:checked')?.value === "img") score++;
+                if (document.querySelector('input[name="q4"]:checked')?.value === "a") score++;
+                document.getElementById('wynikQuizu').textContent = "Twój wynik: " + score + " / 4";
+            });
+        </script>
+        <div class="footer">
+            <a class="cine-link" href="https://developer.mozilla.org/pl/docs/Web/HTML" target="_blank">Dokumentacja HTML</a> |
+            <a class="cine-link" href="https://developer.mozilla.org/pl/docs/Web/CSS" target="_blank">Dokumentacja CSS</a>
+        </div>
+    </div>
